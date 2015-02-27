@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> Artist Details </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+ </HEAD>
+
+ <BODY>
+	<FORM method="post" action="ClassNFunc.php">
+		<TABLE>
+			<TR>
+				<TD>Name:</TD>
+				<TD><INPUT type="text" name="txtArtName"></TD>
+			</TR>
+			<TR>
+				<TD>Email:</TD>
+				<TD><INPUT type="text" name="txtArtEmail"></TD>
+			</TR>
+			<TR>
+				<TD>Country:</TD>
+				<TD><INPUT type="text" name="txtArtCountry"></TD>
+			</TR>
+		</TABLE>
+	</FORM>
+ </BODY>
+</HTML>

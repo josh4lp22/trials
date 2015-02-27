@@ -1,0 +1,60 @@
+<html>
+<head>
+<link rel="stylesheet" href="backgrid/lib/backgrid.css"/>
+<link rel="stylesheet" href="backgrid/lib/backgrid-paginator.css"/>
+<link rel="stylesheet" href="backgrid/lib/backgrid-filter.css"/>
+<link rel="stylesheet" href="backgrid/lib/backgrid-select2-cell.css"/>
+<link rel="stylesheet" href="select2/select2.css"/>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/underscore-min.js"></script>
+<script src="js/backbone-min.js"></script>
+<script src="js/backbone-pageable.js"></script>
+<script src="backgrid/lib/backgrid.js"></script>
+<script src="backgrid/lib/backgrid-paginator.js"></script>
+<script src="backgrid/lib/backgrid-filter.js"></script>
+<script src="backgrid/lib/backgrid-select2-cell.min.js"></script>
+<script src="select2/select2.js"></script>
+</head>
+<body>
+<br><br>
+<div id="grid">
+    <script type="text/javascript">
+		var data = new Backbone.Collection([{another: "Yes"}]);
+
+		// Just like SelectCell, Select2Cell supports option lists and groups
+		var numbers = [{name: "Select One", values: [["Yes", 1], ["No", 2]]}];
+
+		var MySelect2Cell = Backgrid.Extension.Select2Cell.extend({
+		  // any options specific to `select2` goes here
+		  select2Options: {
+			// default is false because Backgrid will save the cell's value
+			// and exit edit mode on enter
+			minimumResultsForSearch: -1,
+			openOnEnter: false
+		  },
+		  optionValues: numbers,
+		  // since the value obtained from the underlying `select` element will always be a string,
+		  // you'll need to provide a `toRaw` formatting method to convert the string back to a
+		  // type suitable for your model, which is an integer in this case.
+		  formatter: _.extend({}, Backgrid.SelectFormatter.prototype, {
+			toRaw: function (formattedValue, model) {
+			  return formattedValue == null ? [] : _.map(formattedValue, function (v) {
+				return parseInt(v);
+			  })
+			}
+		  })
+		});
+
+		var grid = new Backgrid.Grid({
+		  columns: [{
+			name: "another",
+			cell: MySelect2Cell
+		  }],
+		  collection: data
+		});
+
+		$("#grid").append(grid.render().el);
+	</script>
+</div>
+</body>
+</html>

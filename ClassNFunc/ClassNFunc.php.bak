@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+	<TITLE>Biography</TITLE>
+</HEAD>
+<BODY>
+	
+		<?php 
+			class biography
+			{
+				protected $artName,$artEmail,$artCountry;
+
+				function biography($name,$email,$country)
+				{
+					$this->artName=$name;
+					$this->artEmail=$email;
+					$this->artCountry=$country;
+				}
+
+				function myBiography()
+				{
+					print "<br>Name:" . $this->artName;
+					print "<br>Email:" . $this->artEmail;
+					print "<br>Country:" . $this->artCountry;
+				}
+			}
+
+			$obj=new biography($_POST['txtArtName'],$_POST['txtArtEmail'],$_POST['txtArtCountry']);
+			$obj->myBiography();
+		?> 
+
+</BODY>
+</HTML>

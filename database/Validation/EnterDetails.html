@@ -1,0 +1,128 @@
+<HTML>
+<HEAD>
+	<TITLE>Insert Details</TITLE>
+	<SCRIPT>
+		function setValue()
+		{
+			if(document.getElementById("dotNet").checked)
+				document.getElementById("chkDotNet").value="1";
+			else
+				document.getElementById("chkDotNet").value="0";
+			
+			if(document.getElementById("cLang").checked)
+				document.getElementById("chkCLang").value="1";
+			else
+				document.getElementById("chkCLang").value="0";
+
+			if(document.getElementById("java").checked)
+				document.getElementById("chkJava").value="1";
+			else
+				document.getElementById("chkJava").value="0";
+
+			if(document.getElementById("swt").checked)
+				document.getElementById("chkSwt").value="1";
+			else
+				document.getElementById("chkSwt").value="0";
+
+		}
+
+		
+		function checkPassword()
+		{
+			if(document.frmIns.txtpass.value==document.frmIns.txtCpass.value)
+				return true;
+			else
+			{
+				alert("Passwords do not match!!");
+				return false;
+			}
+
+		}
+		
+
+		function checkdate()
+		{
+			var input=document.frmIns.txtDob;
+			var validformat=/^\d{4}\/\d{2}\/\d{2}$/ //Basic check for format validity
+			var returnval=false
+			if (!validformat.test(input.value))
+				alert("Invalid Date Format. Please correct and submit again.")
+			else
+			{ //Detailed check for valid date ranges
+				var yearfield=input.value.split("/")[0]
+				var monthfield=input.value.split("/")[1]
+				var dayfield=input.value.split("/")[2]
+				
+				var dayobj = new Date(yearfield, monthfield-1, dayfield)
+				if ((dayobj.getMonth()+1!=monthfield)||(dayobj.getDate()!=dayfield)||(dayobj.getFullYear()!=yearfield))
+					alert("Invalid Day, Month, or Year range detected. Please correct and submit again.")
+				else
+					returnval=true
+			}
+			if (returnval==false) input.select()
+				return returnval
+		}
+
+		
+		function validateEmail()
+		{
+			var email = document.getElementById('txtEmail');
+			var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+			if (!filter.test(email.value)) 
+			{
+				alert('Please provide a valid email address');
+				email.focus;
+				return false;
+			}
+			else
+				return true;
+		}
+
+
+		function validateForm()
+		{
+			if(document.frmIns.txtUsr.value=="" || document.frmIns.txtpass.value=="" ||document.frmIns.txtCpass.value=="" ||document.frmIns.txtName.value==""
+			||document.frmIns.txtDob.value=="" ||document.frmIns.txtPhone.value==""
+			||document.frmIns.txtEmail.value=="")
+			{
+				alert("Please fill all the details!!");
+				return false;
+			}
+			else 
+			{
+				if(checkPassword() && validateEmail() && checkdate())
+					return true;
+				else
+					return false;
+			}
+		}
+
+	</SCRIPT>
+</HEAD>
+<BODY>
+	<FORM method="post" onsubmit="return validateForm()" name="frmIns" action="Insert.php">
+		User Name: <INPUT type="text" name="txtUsr" id="txtUsr">*<BR>
+		Password: <INPUT type="password" name="txtpass" id="txtpass">*<BR>
+		Confirm Password: <INPUT type="password" name="txtCpass" id="txtCpass">*<BR>
+		Name: <INPUT type="text" name="txtName" id="txtName">*<BR>
+		Gender:<input type="radio" name="rdSex" id="rdmSex" value="1" checked>Male 
+				<input type="radio" name="rdSex" id="rdfSex" value="0">Female *<br>
+		DOB: <INPUT type="text" name="txtDob" id="txtDob">* (YYYY/MM/DD)<BR>
+		Phone: <INPUT type="text" name="txtPhone" id="txtPhone">*<BR>
+		EMail: <INPUT type="text" name="txtEmail" id="txtEmail">*<BR>
+		Skills: <input type="checkbox" name="dotNet" id="dotNet" value="0" onclick="setValue()">.NET
+				 <input type="checkbox" name="cLang" id="cLang" value="0" onclick="setValue()">C <BR>
+				 <input type="checkbox" name="java" id="java" value="0" onclick="setValue()">Java
+				 <input type="checkbox" name="swt" id="swt" value="0" onclick="setValue()">Software Testing <BR>
+		
+		<INPUT type="hidden" name="chkDotNet" id="chkDotNet" value="0">
+		<INPUT type="hidden" name="chkCLang" id="chkCLang" value="0">
+		<INPUT type="hidden" name="chkJava" id="chkJava" value="0">
+		<INPUT type="hidden" name="chkSwt" id="chkSwt" value="0">
+
+		<INPUT type="submit" value="Insert">
+		<br>(*required fields)
+	</FORM>
+<BODY>
+</HTML>

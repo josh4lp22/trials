@@ -1,0 +1,52 @@
+<?php
+class User
+{
+	protected $con;
+	
+
+	function __construct()
+	{
+		$this->con="";
+	}
+
+	function connectDt($dbName)
+	{
+		$this->con = mysql_connect("localhost","root","");
+		if (!$this->con)
+		{
+		  die('Could not connect: ' . mysql_error());
+		}
+
+		mysql_select_db($dbName, $this->con);
+	}
+
+
+	function fetchAllRecords($tableName)
+	{
+		
+
+		$sql="SELECT * FROM " . $tableName ;
+
+		$result = mysql_query($sql);
+		
+		while($db_field = mysql_fetch_assoc($result)) 
+		{
+				print "<BR>Name: " .$db_field['usrName'];
+				print "<BR>Email: " .$db_field['usrEmail'];
+				print "<BR>DOB: " .$db_field['usrDOB'];
+				print "<BR>City: " .$db_field['usrCity'];
+				print "<BR>";
+		}
+	
+
+
+				mysql_close($this->con);	
+	}
+			
+}
+
+$userObj = new User();
+$userObj->connectDt("joetest");
+$userObj->fetchAllRecords("userinfo");
+
+?>

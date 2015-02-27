@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> QR Code </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+	<script type="text/javascript" src="jquery.qrcode.js"></script>
+	<script type="text/javascript" src="qrcode.js"></script>
+
+	
+ </HEAD>
+
+ <BODY>
+		<div id="qrcode"></div>
+
+<script>
+		jQuery('#qrcode').qrcode({
+		render	: "table",
+		text	: "www.google.co.in"
+	});
+	</script>
+
+ </BODY>
+</HTML>

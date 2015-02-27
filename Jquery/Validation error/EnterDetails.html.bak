@@ -1,0 +1,37 @@
+<HTML>
+<HEAD>
+	<TITLE>Insert Details</TITLE>
+	<script type="text/javascript" src="jquery.validate.js"></script>
+	<link rel="stylesheet" href="jquery-ui.css" />
+	 <script src="jquery-1.8.3.js"></script>
+	  <script src="jquery-ui.js"></script>
+
+
+	 <script>
+  $(document).ready(function(){
+    $("#frmIns").validate();
+  });
+  </script>
+</HEAD>
+<BODY>
+	<FORM method="post" name="frmIns" action="" id="frmIns">
+		User Name: <INPUT type="text" name="name" id="txtUsr" class="required">*<BR>
+		Password: <INPUT type="password" name="txtpass" id="txtpass" class="required">*<BR>
+		Confirm Password: <INPUT type="password" name="password" id="txtCpass" class="required">*<BR>
+		Name: <INPUT type="text" name="txtName" id="txtName" class="required">*<BR>
+		Gender:<input type="radio" name="rdSex" id="rdmSex" value="1" checked>Male 
+				<input type="radio" name="rdSex" id="rdfSex" value="0">Female *<br>
+		DOB: <INPUT type="text" name="date" id="txtDob" class="required">* (YYYY/MM/DD)<BR>
+		Phone: <INPUT type="text" name="comment" id="txtPhone" class="required">*<BR>
+		EMail: <INPUT type="text" name="email" id="txtEmail" class="required">*<BR>
+		Skills: <input type="checkbox" name="dotNet" id="dotNet" value="0" onclick="setValue()">.NET
+				 <input type="checkbox" name="cLang" id="cLang" value="0" onclick="setValue()">C <BR>
+				 <input type="checkbox" name="java" id="java" value="0" onclick="setValue()">Java
+				 <input type="checkbox" name="swt" id="swt" value="0" onclick="setValue()">Software Testing <BR>
+
+
+		<input class="submit" type="Button" value="Submit"/>
+		<br>(*required fields)
+	</FORM>
+<BODY>
+</HTML>

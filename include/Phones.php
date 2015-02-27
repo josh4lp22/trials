@@ -1,0 +1,33 @@
+	<?php
+
+		class Phones
+		{
+			protected $display;
+			protected $memory;
+			protected $battery;
+			public $cost;
+
+			function __construct($display,$memory,$battery,$cost)
+			{
+				$this->display=$display;
+				$this->memory = $memory;
+				$this->battery = $battery;
+				$this->cost = $cost;
+			}
+			
+			function  displayMyConfig()
+			{
+				echo "Display= " . $this->display . "<BR>";
+				echo "Memory= " . $this->memory . "<BR>";
+				echo "Battery= " . $this->battery . "<BR>";
+			}
+
+			function displayMyCost()
+			{
+				echo "<BR>Cost= " . $this->cost . "<BR>";
+			}
+		}
+		
+
+				
+	?>

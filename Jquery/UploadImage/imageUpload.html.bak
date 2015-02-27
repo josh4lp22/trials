@@ -1,0 +1,55 @@
+<html>
+<head>
+	<title>Upload File</title>
+	<link rel="stylesheet" href="jquery-ui.css" />
+	<script src="jquery-1.8.3.js"></script>
+	<script src="jquery-ui.js"></script>
+	<link rel="stylesheet" href="/resources/demos/style.css" />
+	<script type="text/javascript">
+		 $("#file1").live('change',function(){
+			
+			//Periodic update function to set the value of the progressbar.
+			var update = function(){
+				var value = $('#progressbar').progressbar('value');
+				var max = $('#progressbar').progressbar('option', 'max');
+				if (value < max) {
+					$('#progressbar').progressbar('value', value + 10);
+					displaytext();
+					setTimeout(update, 100)
+					
+				}
+			};
+			
+			//Create the widget and start updating the progress.
+			$('#progressbar').progressbar();
+			update();
+			
+		});
+
+		var displaytext = function () {
+		   var text = $("#progressbar").progressbar('value') + '%';
+		   var element = $("<span style='position: absolute;'>" + text + "</span>");
+		   $("#progressCount").html(element);
+		   var width = element.width();
+		   var height = element.height();
+		   var location = $("#progressbar").offset();
+		   element.css({ left: location.left + $("#progressbar").width() / 2 - width / 2, top: location.top +    $("#progressbar").height() / 2 - height / 2 });
+		}
+	</script>
+
+
+</head>
+<body>
+
+<form action="upload_file.php" method="post"
+		enctype="multipart/form-data" id="form1">
+<label for="name">Username:</label>
+<input type="text" name="txtName"><br>
+<label for="file">Filename:</label>
+<input type="file" name="file" id="file1"><br>
+Progress:<div id="progressbar"></div><br><br>
+<input type="Submit" value="Submit">
+</form>
+<div id="progressCount"></div>
+</body>
+</html> 
