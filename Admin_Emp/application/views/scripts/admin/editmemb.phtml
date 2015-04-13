@@ -1,0 +1,48 @@
+  
+<div id="rememp" align="center">
+ <form id="frmRemMem" method="post" action="editmemb">
+
+
+	 <p>
+     <label >Employee:</label>
+     <SELECT  name="selRemEmp">
+     	<?php 
+     	foreach($this->prjeemp as $eachemp)
+     	{
+     		echo "<option value=\"".$eachemp['usrName']."\">".$eachemp['empName']."</option>\n  ";
+     		
+     	}
+     	
+     	?>
+     </SELECT>
+   	</p>
+	
+	<input type="hidden" name="prid" value="<?php echo $_GET['prjid']?>">
+   <p>
+     <input type="submit" value="Remove" name="Remove"/>
+   </p>
+
+ </form>
+</div>
+
+<div id="assnemp" align="center">
+ <form id="frmAddMem" method="post" action="editmemb">
+
+
+	 <p>
+     <label >Employee:</label>
+     <SELECT  name="selAddEmp">
+     	<?php 
+     	foreach($this->prjnemp as $eachemp)
+     		echo "<option value=\"".$eachemp['usrName']."\">".$eachemp['empName']."</option>\n  ";
+     	?>
+     </SELECT>
+   	</p>
+
+	<input type="hidden" name="prid2" value="<?php echo $_GET['prjid']?>">
+   <p>
+     <input type="submit" value="Add" name="Add"/>
+   </p>
+
+ </form>
+</div>

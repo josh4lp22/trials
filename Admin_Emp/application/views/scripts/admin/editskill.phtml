@@ -1,0 +1,59 @@
+<style type="text/css">
+* { font-family: Verdana; font-size: 96%; }
+label { width: 10em; float: left; }
+p { clear: both; }
+
+
+</style>
+
+	 <link href="../styles/rateit.css" rel="stylesheet" type="text/css">
+   <script src="../scripts/jquery.min.js" type="text/javascript"></script>
+   <script src="../scripts/jquery.rateit.js" type="text/javascript"></script>
+
+<p>Employee Skills:</p>
+<p>
+  
+	<table border="1">
+		<tr>
+			<th>Employee</th>
+			<th>Skills</th>
+			<th>Rating</th>
+		</tr>
+		<?php
+
+	 			foreach($this->skData as $eachsk)
+				{ 
+					print "<tr>";
+					print "<td>" .$eachsk['empName'] . "</td><td>" .$eachsk['skills'] . "</td>
+						<td><div class='rateit' data-rateit-value='" . $eachsk['skillRating'] ."' data-rateit-ispreset='true' data-rateit-readonly='true'>
+            			</div></td>";
+					print "</tr>";
+
+				} 
+		?>
+		
+	</table>
+
+</p>
+
+<form method="post" action="editskill">
+<input type="hidden" name="usrname" value='<?php echo $_GET['emp'];?>'>
+<p>
+Change Ratings:<br>
+<?php
+				foreach($this->sksData as $eachsk)
+				{ 
+					print $eachsk['empName'] . ":
+						<input type='range' min='0' max='5' value='" . $eachsk['skillRating'] ."' step='0.5' id='empRate' name='empRate'>
+            			<div class='rateit' data-rateit-backingfld='#empRate' data-rateit-ispreset='true'>
+            			</div>";
+
+
+				} 
+				?>
+</p>
+<p><input type="submit" name="Update" value="Update"></p>
+</form>
+
+	
+

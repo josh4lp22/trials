@@ -1,0 +1,163 @@
+	<div id="left">
+	<div id="lat_events">
+		<p>Latest events:</p>
+		<p>
+		<table border="1">
+			<tr>
+				<th>Event</th>
+				<th>Date</th>
+
+			</tr>
+		<?php
+	 		foreach($this->deta as $eachevnt)
+			{ 
+/* 				echo "<pre>";
+				
+				$eventDate = $eachevnt->getEventdate();
+				print_r($eventDate);
+				echo $eventDate->date; exit;
+				if(isset($eventDate->date)){
+					echo "inside";
+				print_r($eventDate->date);
+				} */
+				print "<tr><td>" .$eachevnt->getEventname() . "</td><td>" . $eachevnt->getEventdate() . "</td></tr>";
+			}
+
+		?>
+		</table>
+		</p>
+		<p><a href="/admin/createevent">Create an event</a> </p>
+	</div>
+
+	<div id="lat_events">
+		<p>Send group emails:</p>
+		<form method="post" action="/admin/index">
+		<p>
+			Subject:<input type="text" name="txtSubj"><br>
+			Body: <textarea name="txtContent" rows="5"></textarea>
+		
+		</p>
+		<p>
+			<input type="submit" value="Send" name="Send">
+		</p>
+		</form>
+	</div>
+	</div>
+ 
+	<div id="middle">
+	<div id="prj_assn">
+		<p>Project Assignments:</p>
+		<p>
+		<table border="1">
+			<tr>
+				<th>No.</th>
+				<th>Project</th>
+				<th>Edit</th>
+				<th>Assign</th>
+			</tr>
+			<?php
+	 		 /* foreach($this->prjData as $eachprj)
+				{ 
+					print "<tr><td>" .$eachprj['projID'] . ".</td><td>  " . $eachprj['projName'];
+					print "</td><td>  <a href='admin/editmemb?prjid=".$eachprj['projID']. "'>Edit team members</a> ";
+					print "</td><td> <a href='admin/assigntask?prjid=".$eachprj['projID']. "'>Assign Tasks</a> </td></tr>";
+				}  */
+				
+		foreach ($this->pagePrj as $item) {
+					print "<tr><td>" .$item->getProjid() . ".</td><td>  " . $item->getProjname();
+					print "</td><td>  <a href='/admin/editmemb?prjid=".$item->getProjid(). "'>Edit team members</a> ";
+					print "</td><td> <a href='/admin/assigntask?prjid=".$item->getProjid(). "'>Assign Tasks</a> </td></tr>";
+			}
+
+			
+
+			?>
+			</table>
+		</p>
+		<?php 
+					echo $this->paginationControl($this->pagePrj,'Sliding',
+					'my_pagination_control.phtml');?>
+	</div>
+
+	<div id="prj_assn">
+		<p>Leave Approval:</p>
+		<p>
+			<table border="1">
+			<tr>
+				<th>ID</th>
+				<th>From</th>
+				<th>To</th>
+				<th>Employee</th>
+			</tr>
+			<?php
+	 			foreach($this->lvData as $eachLev)
+				{ 
+					print "<tr>";
+					print "<td>" .$eachLev['leavid'] . "</td>
+							<td>" . $eachLev['fromdate']. "</td>
+							<td>" .$eachLev['todate']. "</td>
+							<td>" .$eachLev['empname'] . "</td>";
+					print "</tr>";
+				} 
+			?>
+			</table>
+		</p>
+		<a href="/admin/approveleav">Participate</a>
+	</div>
+	
+	<div id="prj_assn">
+		<p>Rate Skills:</p>
+		<p>
+			<table border="1">
+			<tr>
+				<th>Employee</th>
+				<th> </th>
+			</tr>
+			<?php
+	 			foreach($this->skilData as $eachEmp)
+				{ 
+					print "<tr>";
+					print "<td>" .$eachEmp['empname'] . "</td><td> <a href='/admin/editskill?emp=" . $eachEmp['usrname'] ."'>Edit Ratings</a> </td>";
+					print "</tr>";
+				} 
+			?>
+			</table>
+		
+		</p>
+	</div>
+	</div>
+	
+	<?php 
+		foreach($this->picData as $eachEmp)
+				$path="/pictures/" .$eachEmp['usrName']."/" . $eachEmp['profilepic'];
+	?>
+	<div id="right">
+
+	<div id="prof_img">
+	<!--  	<img alt="" src="<?php //echo $path;?>" >-->
+	<?php 
+		 echo $this->image('name',$path,array('alt' => 'User Pic',
+											'height' => '100%',
+											'width' => '100%')); 
+	?>
+	</div>
+	<div id="last_pan">
+	<table border="1">
+	<tr>
+	<?php 
+	foreach($this->UpicData as $eachPic)
+	{
+		$path="/pictures/" .$eachPic['usrName'] ."/" . $eachPic['picPath'];
+		echo "<td><a href='/admin/setpicture?pic=".$eachPic['picPath']. 
+					"&usr=".$eachPic['usrName']. "'>" . $this->image('name',$path,array('alt' => $eachPic['picPath'],
+											'height' => '75',
+											'width' => '75')) . "</a></td>";
+	}
+	?>
+	</tr>
+	</table>
+	<p> <a href="/admin/gallery" >View gallery</a></p>
+	<p> <a href="/admin/managepic" >Upload Picture</a></p>
+	</div>
+	
+	</div>

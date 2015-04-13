@@ -1,0 +1,154 @@
+@CHARSET "ISO-8859-1";
+
+a { text-decoration:none; }
+a:hover { text-decoration:underline; }
+
+#wrap {
+margin: 0 auto;
+position: absolute;
+width: 1024px;
+height: 768px;
+border:1px solid #646464;
+border-style:solid;
+
+}
+
+#header {
+position: relative;
+top: 0px;
+left:0px;
+width: 100%;
+height: 15%;
+border:1px solid #646464;
+border-style:solid;
+background-color: navy;
+color: white;
+font-size: 30px;
+}
+
+.loginstatus {
+	position: absolute; 
+	font-family: arial; 
+	font-size: 14px; 
+	color: rgb(255, 255, 255); 
+	bottom: 10px; 
+	right: 10px; 
+	font-weight: bold;
+	text-decoration:none;
+}
+
+#content {
+position: relative;
+top: 0px;
+width: 100%;
+height: 100%;
+border:0px solid #646464;
+border-style:solid;
+}
+
+#right {
+position: absolute;
+top: 0px;
+left:80%;
+width: 20%;
+height: 85%;
+border:1px solid #646464;
+border-style:solid;
+background-color:rgb(228,228,228);
+}
+
+#left {
+position: absolute;
+top: 0px;
+left:0px;
+width: 20%;
+height: 85%;
+border:1px solid #646464;
+border-style:solid;
+background-color:rgb(228,228,228);
+}
+
+#middle {
+position: absolute;
+top: 0px;
+left:20%;
+width: 60%;
+height: 85%;
+border:1px solid #646464;
+border-style:solid;
+background-color:rgb(245,245,245);
+}
+
+
+#lat_events {
+position: relative;
+margin-top: 10%;
+margin-left: 2%;
+margin-right: 2%;
+width: 90%;
+height: 40%;
+overflow-y: scroll;
+overflow-x: scroll;
+border:1px solid #646464;
+border-style:solid;
+background-color:white;
+}
+
+#prj_assn{
+position: relative;
+margin-top: 2%;
+margin-left: 2%;
+margin-right: 2%;
+width: 95%;
+height: 30%;
+overflow-y: scroll;
+border:1px solid #646464;
+border-style:solid;
+background-color:white;
+}
+
+#prof_img{
+position: relative;
+margin-top: 2%;
+margin-left: 10%;
+margin-right: 10%;
+width: 78%;
+height: 28%;
+border:1px solid #646464;
+border-style:solid;
+background-size: 100% 100%;
+background-color:white;
+}
+
+#last_pan{
+position: relative;
+margin-top: 30%;
+margin-left: 5%;
+margin-right: 5%;
+width: 90%;
+height: 30%;
+overflow-y: scroll;
+border:1px solid #646464;
+border-style:solid;
+background-color:white;
+}
+
+#rememp{
+position:absolute;
+top: 20px;
+left:20px;
+width: 360px;
+height: 250px;
+border:1px solid #646464;
+border-style:solid;	
+}
+
+#assnemp{
+position:absolute;
+top: 20px;
+left:400px;
+width: 360px;
+height: 250px;
+border:1px solid #646464;
+border-style:solid;	
+}

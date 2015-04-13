@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title>Portal</title>
+	<link rel="stylesheet" type="text/css" href="/styles/layout1.css">
+</head>
+<body>
+<div id="wrap">
+
+	<div id="header" align="center">
+	<?php 
+	If (Zend_Session::sessionExists())
+	{
+		$sess = new Zend_Session_Namespace('admin_emp');
+		//echo "sess:" . $sess->isAdmin;
+		if($sess->isAdmin==1)
+			echo "<p>Admin Portal</p>";
+		elseif($sess->isAdmin==0)
+			echo "<p>Employee Portal</p>";
+		echo "<a href='/login/logout' class='loginstatus'>log out</a>";
+	}
+	else
+		echo "<p>Portal</p>";
+	?>
+
+	</div>
+	<div id="content">
+		<?php echo $this->layout()->content; ?>
+	</div>
+
+</div>
+
+</body>
+</html>
+
+
+

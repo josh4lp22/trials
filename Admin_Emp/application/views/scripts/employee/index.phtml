@@ -1,0 +1,109 @@
+	
+	<div id="left">
+	<div id="lat_events">
+		<p>Latest Updates:</p>
+		
+		
+	</div>
+	
+	<div id="lat_events">
+		<p>Task List:</p>
+		<p>
+		<table border="1">
+			<tr>
+				<th>End Date</th>
+				<th>Task</th>
+
+			</tr>
+		<?php 
+			foreach($this->tskData as $eachtsk)
+			{ 
+				print "<tr><td>" .$eachtsk['endDate'] . "</td><td>" . $eachtsk['taskDec'] . "</td></tr>";
+			} 
+		?>
+		
+		</table>
+		</p>
+	</div>
+	</div>
+
+	<div id="middle">
+	<div id="prj_assn">
+		<p>My profile:<br><br>
+		<?php
+	 		foreach($this->empData as $eachmp)
+			{ 
+				print "Name:" .$eachmp['empName'] . "<br>Skills:" . $eachmp['skills'];
+			} 
+		?>
+		</p>
+		<p>Project Details:
+		<table border="1">
+			<tr>
+				<th>Project</th>
+				<th>Description</th>
+
+			</tr>
+		<?php 
+			foreach($this->emppData as $eachmp)
+			{ 
+				print "<tr><td>" .$eachmp['projName'] . "</td><td>" . $eachmp['projDesc'] . "</td></tr>";
+			} 
+		?>
+		
+		</table>
+		</p>
+	</div>
+
+	<div id="prj_assn">
+		<p>Upcoming Events:</p>
+		<p>
+		<table border="1">
+			<tr>
+				<th>Event</th>
+				<th>Date</th>
+
+			</tr>
+		<?php
+		date_default_timezone_set("Asia/Calcutta");
+		$now = time();
+		
+	 		foreach($this->evntData as $eachevnt)
+			{ 
+				 // or your date as well
+				$your_date = strtotime($eachevnt['eventDate']);
+				$datediff = $your_date - $now;
+				$days=floor($datediff/(60*60*24)) +1;
+								
+				if($days>=0 && $days<=30)
+					print "<tr><td>" .$eachevnt['eventName'] . "</td><td>" . $eachevnt['eventDate'] . "</td></tr>";
+			} 
+		?>
+		</table>
+		</p>
+		
+	</div>
+	
+	
+	</div>
+	
+	<div id="right">
+	<div id="prof_img">
+	<?php 
+		foreach($this->picData as $eachEmp)
+				$path="/pictures/" . $eachEmp['profilepic'];
+	?>
+	<!--  	<img alt="" src="<?php //echo $path;?>" height="150" width="150">-->
+	<?php 
+		echo $this->image('name',$path,array('alt' => 'User Pic',
+											'height' => '100%',
+											'width' => '100%'));
+	?>	
+	</div>
+	<div id="last_pan">
+	<p> Leave Management</p>
+	<p><a href="/employee/applyleave">Apply for leave</a>
+	</div>
+	
+	</div>
+

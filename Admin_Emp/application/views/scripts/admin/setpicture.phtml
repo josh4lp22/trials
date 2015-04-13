@@ -1,0 +1,12 @@
+
+<img src="<?php echo '/pictures/'.$_GET['usr']. '/' . $_GET['pic']; ?>" 
+style='border: none; 
+max-height : 70%;
+max-width : 70%;
+
+left: 100px'>
+
+<form action="/admin/setpicture">
+	<input type="hidden" value="<?php echo $_GET['pic']; ?>" name="picPath"><br><br>
+	<input type="submit" value="Set Profile Picture" name="Set">
+</form>
